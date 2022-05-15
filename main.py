@@ -13,9 +13,9 @@ class MyWindow(Handy.Window):
         self.set_title("Tarayıcı")
         GLib.set_application_name("Tarayıcı")
         GLib.set_prgname('Tarayıcı')
+        self.set_default_size(900, 600)
 
         self.main_box = Gtk.Box(
-            spacing = 6,
             orientation = Gtk.Orientation.VERTICAL
         )
         self.add(self.main_box)
