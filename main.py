@@ -28,6 +28,7 @@ class MyWindow(Handy.Window):
         self.web = WebKit2.WebView()
         self.web.load_uri("https://duckduckgo.com")
         self.inp_url.set_placeholder_text("Web'de arayın veya URL adresi girin...")
+        self.web.connect('notify::estimated-load-progress', self.change_url)
         self.inp_url.connect("activate", self.on_inp_url_activate)
         self.hb.set_custom_title(self.inp_url)
         self.btn_prev = Gtk.Button()
@@ -71,6 +72,9 @@ class MyWindow(Handy.Window):
         self.inp_url.set_text("")
     def on_btn_ref_clicked(self, widget):
         self.web.reload()
+    def change_url(self, widget, frame):
+        url_text = self.web.get_uri()
+        self.inp_url.set_text(url_text)
 win = MyWindow()
 win.connect("destroy", Gtk.main_quit)
 win.show_all()
