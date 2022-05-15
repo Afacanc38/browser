@@ -69,7 +69,6 @@ class MyWindow(Handy.Window):
             self.web.load_uri(url_text)
         else:
             self.web.load_uri(f"https://duckduckgo.com/?q={url_text}")
-        self.inp_url.set_text("")
     def on_btn_ref_clicked(self, widget):
         self.web.reload()
     def change_url(self, widget, frame):
